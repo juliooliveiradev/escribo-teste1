@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somatório de Divisíveis por 3 ou 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculadora de Somatório</h2>
+
+    <form id="formCalc">
+        <label for="numeroInput">Digite um número inteiro positivo:</label>
+        <input type="number" id="numero" required>
+        <br>
+        <button type="button" onclick="calcSoma()">Calcular</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function calcSoma(){
+            const num = parseInt(document.getElementById('numero').value);
+
+            const soma  = [...Array.from({ length : num })]
+                .map((_, i) => i)
+                .filter((i) => i % 3 === 0 || i % 5 === 0 )
+                .reduce((ac, val) => ac + val,0);
+            
+            document.getElementById('result').innerHTML = `O somatório dos valores divisíveis por 3 ou 5 inferiores a ${num} é: ${soma}`;
+        }
+    </script>
+
+</body>
+</html>
